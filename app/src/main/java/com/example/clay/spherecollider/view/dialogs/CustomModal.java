@@ -8,10 +8,9 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.clay.spherecollider.BallGame;
+import com.example.clay.spherecollider.view.game.SphereCollider;
 import com.example.clay.spherecollider.R;
-import com.example.clay.spherecollider.SphereCollider;
-import com.example.clay.spherecollider.view.level.CurrentLevel;
+import com.example.clay.spherecollider.view.game.management.GameMediator;
 import com.example.clay.spherecollider.view.level.LevelView;
 import com.github.lzyzsd.circleprogress.DonutProgress;
 
@@ -52,7 +51,7 @@ public class CustomModal {
             public void onClick(View v) {
                 d.dismiss();
                 // will probably later want to make navigation back to main View (HOME)
-                Intent mainScreen = new Intent(context, SphereCollider.class);
+                Intent mainScreen = new Intent(context, com.example.clay.spherecollider.SphereCollider.class);
                 context.startActivity(mainScreen);
             }
         });
@@ -92,10 +91,10 @@ public class CustomModal {
                 // THIS STILL NEEDS TO BE DONE!
 
                 // get next level info
-                CurrentLevel currentLevel = CurrentLevel.getInstance(context);
-                currentLevel.setLevelId(currentLevel.getLevelId() + 1);
+                GameMediator gameMediator = GameMediator.getInstance();
+                gameMediator.setLevelId(gameMediator.getLevelId() + 1);
 
-                Intent startBallGame = new Intent(context, BallGame.class);
+                Intent startBallGame = new Intent(context, SphereCollider.class);
                 context.startActivity(startBallGame);
 
                 d.dismiss();

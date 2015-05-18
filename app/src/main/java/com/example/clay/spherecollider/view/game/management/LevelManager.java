@@ -24,15 +24,15 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  */
 public class LevelManager implements Observer {
     private GameMediator gameMediator;
-    private DatabaseEmulator dbEmulator;
+    private ModelManager modelManager;
 
     private ConcurrentLinkedQueue models, interactiveModels, inflaters, reducers, points;
     private Ball gameBall;
     private Score gameScore;
     private Rect ballRect;
-    private int xMax, yMax, inflaterMax, reducerMax, pointMax;
+    private int xMax, yMax, inflaterMax, reducerMax, pointMax, maxPoints;
     private Handler handler;
-    private int maxScore = 0, score = 0;
+    private int maxScore = 0, score = 0, drawnPoints = 0;
 
     /**
      * Default constructor
@@ -42,10 +42,11 @@ public class LevelManager implements Observer {
         this.models = new ConcurrentLinkedQueue();
         this.gameMediator.setModels(models);
         this.handler = new Handler();
-        this.dbEmulator = new DatabaseEmulator();
-        this.dbEmulator.getLevelObjects();
+        this.modelManager = new ModelManager();
+        this.modelManager.createLevelObjects();
         this.xMax = gameMediator.getXMax();
         this.yMax = gameMediator.getYMax();
+        this.maxPoints = gameMediator.getMaxPoints();
         this.initializeLevelManager();
     }
 
@@ -58,6 +59,7 @@ public class LevelManager implements Observer {
     public void update(Observable observable, Object data) {
 
         if (gameBall.isDead()) gameMediator.getSurface().gameOver();
+        if (points.size() == 0) gameBall.setDead(true);
 
         // Check for ball intersections and deal with appropriately
         Iterator iterator = interactiveModels.iterator();
@@ -230,6 +232,7 @@ public class LevelManager implements Observer {
             } else if (model.getType() == ModelType.POINT) {
                 points.add(model);
                 maxScore += ((Point)model).getValue();
+                drawnPoints++;
             }
             if (model.getType() != ModelType.BACKGROUND && model.getType() != ModelType.BALL) {
                 interactiveModels.add(model);
@@ -241,6 +244,8 @@ public class LevelManager implements Observer {
         reducerMax = reducers.size();
         pointMax = points.size();
         gameMediator.getSensorHandler().addObserver(this);
+        gameMediator.setScore(score);
+        gameMediator.setMaxScore(maxScore);
     }
 
     /**
@@ -250,7 +255,7 @@ public class LevelManager implements Observer {
         int inflateValue = RandomUtility.randIntInRange(10, 40);
         int maxValue = inflateValue * 3;
         int size = Math.round(inflateValue * 2);
-        Inflater inflater = new Inflater(size, maxValue, inflateValue, "#fc8d4d");
+        Inflater inflater = new Inflater(size, maxValue, inflateValue, gameMediator.getInflaterColor());
         inflater = (Inflater)RandomUtility.randomizeLocation(inflater);
         models.add(inflater);
         interactiveModels.add(inflater);
@@ -264,7 +269,7 @@ public class LevelManager implements Observer {
         int reduceValue = RandomUtility.randIntInRange(10, 20);
         int maxValue = reduceValue * 3;
         int size = Math.round(reduceValue * 2);
-        Reducer reducer = new Reducer(size, maxValue, reduceValue, "#fc8d4d");
+        Reducer reducer = new Reducer(size, maxValue, reduceValue, gameMediator.getReducerColor());
         reducer = (Reducer)RandomUtility.randomizeLocation(reducer);
         models.add(reducer);
         interactiveModels.add(reducer);
@@ -275,13 +280,16 @@ public class LevelManager implements Observer {
      * Creates a new point
      */
     private void createNewPoint() {
-        int value = RandomUtility.randIntInRange(10, 30);
-        maxScore += value;
-        int size = value * 2;
-        Point point = new Point(size, value, "#ffd600");
-        point = (Point)RandomUtility.randomizeLocation(point);
-        models.add(point);
-        interactiveModels.add(point);
-        points.add(point);
+        if (drawnPoints < maxPoints) {
+            int value = RandomUtility.randIntInRange(10, 30);
+            maxScore += value;
+            drawnPoints++;
+            int size = value * 2;
+            Point point = new Point(size, value, "#ffd600");
+            point = (Point)RandomUtility.randomizeLocation(point);
+            models.add(point);
+            interactiveModels.add(point);
+            points.add(point);
+        }
     }
 }

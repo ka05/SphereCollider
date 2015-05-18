@@ -21,10 +21,10 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.clay.spherecollider.BallGame;
+import com.example.clay.spherecollider.view.game.SphereCollider;
 import com.example.clay.spherecollider.R;
-import com.example.clay.spherecollider.SphereCollider;
 import com.example.clay.spherecollider.database.DatabaseConnector;
+import com.example.clay.spherecollider.view.game.management.GameMediator;
 
 /**
  * Created by Clay on 4/11/2015.
@@ -36,7 +36,7 @@ public class LevelView extends Activity {
     public static long levelRow;
     public static boolean levelSelected;
 
-    public static CurrentLevel currentLevel;
+    public static GameMediator gameMediator;
 
     // adapter for populating the ListView
     private CursorAdapter levelAdapter;
@@ -50,6 +50,9 @@ public class LevelView extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_levels);
+
+        gameMediator = GameMediator.getInstance();
+        gameMediator.setContext(getApplicationContext());
 
         levelSelected = false;
 
@@ -65,7 +68,7 @@ public class LevelView extends Activity {
             public void onClick(View v) {
                 if (levelSelected == true) {
                     // create and Intent to launch the ViewContact Activity
-                    Intent startLevelView = new Intent(LevelView.this, BallGame.class);
+                    Intent startLevelView = new Intent(LevelView.this, SphereCollider.class);
 
                     //pass the selected contacts row ID as extra with the Intent
                     startLevelView.putExtra(ROW_ID, levelRow);
@@ -78,14 +81,14 @@ public class LevelView extends Activity {
 
         ((Button)findViewById(R.id.btnHome)).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent home = new Intent(LevelView.this, SphereCollider.class);
+                Intent home = new Intent(LevelView.this, com.example.clay.spherecollider.SphereCollider.class);
                 startActivity(home);
             }
         });
 
 
         // map each contacts name to a TextView in the ListView layout
-        String[] from = new String[]{"levelname", "levelcompleted"};
+        String[] from = new String[]{"levelName", "levelCompleted"};
         int[] to = new int[]{R.id.txtLevelName, R.id.txtLevelCompleted};
         levelAdapter = new SimpleCursorAdapter(
                 LevelView.this, R.layout.level_table_row, null, from, to, 0
@@ -204,26 +207,19 @@ public class LevelView extends Activity {
             result.moveToFirst(); // move to the first item
 
             // get the column index for each data item
-            currentLevel = CurrentLevel.getInstance(getApplicationContext());
-            currentLevel.setLevelId(result.getLong(result.getColumnIndex("_id")));
-            currentLevel.setLevelName( result.getString( result.getColumnIndex("levelname") ) );
-            currentLevel.setLevelBgImgsrc(result.getString(result.getColumnIndex("levelbgimgsrc")));
-            currentLevel.setLevelCompleted( result.getString( result.getColumnIndex("levelcompleted") ) );
+            gameMediator.setLevelId(result.getLong(result.getColumnIndex("_id")));
+            gameMediator.setLevelName( result.getString( result.getColumnIndex("levelName") ) );
+            gameMediator.setLevelBgImgSrc(result.getInt(result.getColumnIndex("levelBG")));
+            gameMediator.setLevelCompleted( result.getString( result.getColumnIndex("levelCompleted") ) );
 
-            currentLevel.setBallColor(result.getString(result.getColumnIndex("ballColor")));
-            currentLevel.setInflaterColor(result.getString(result.getColumnIndex("inflaterColor")));
-            currentLevel.setDeflaterColor(result.getString(result.getColumnIndex("deflaterColor")));
+            gameMediator.setBallColor(result.getString(result.getColumnIndex("ballColor")));
+            gameMediator.setInflaterColor(result.getString(result.getColumnIndex("inflaterColor")));
+            gameMediator.setReducerColor(result.getString(result.getColumnIndex("reducerColor")));
+            gameMediator.setNumInflaters(result.getInt(result.getColumnIndex("numInflaters")));
+            gameMediator.setNumReducers(result.getInt(result.getColumnIndex("numReducers")));
+            gameMediator.setNumPoints(result.getInt(result.getColumnIndex("numPoints")));
+            gameMediator.setMaxPoints(result.getInt(result.getColumnIndex("maxPoints")));
 
-            currentLevel.setMaxPoints( result.getInt( result.getColumnIndex("maxpoints") ) );
-            currentLevel.setOneStarPoints( result.getInt( result.getColumnIndex("onestarpoints") ) );
-            currentLevel.setTwoStarPoints( result.getInt( result.getColumnIndex("twostarpoints") ) );
-            currentLevel.setThreeStarPoints( result.getInt( result.getColumnIndex("threestarpoints") ) );
-
-            currentLevel.setNumLives( result.getInt( result.getColumnIndex("numlives") ) );
-            currentLevel.setNumDeflaters( result.getInt(result.getColumnIndex("numdeflaters")));
-            currentLevel.setNumInflaters( result.getInt(result.getColumnIndex("numinflaters")));
-            currentLevel.setInflaterMaxVelocity(result.getInt(result.getColumnIndex("inflatermaxvelocity") ) );
-            currentLevel.setInflaterMinVelocity( result.getInt(result.getColumnIndex("inflaterminvelocity") ) );
 
             showLevelSelection();
             result.close(); // close the result cursor
@@ -234,7 +230,7 @@ public class LevelView extends Activity {
     OnItemClickListener viewLevelListener = new OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            // get currentLevelData
+            // get gameMediatorData
             if(view.isEnabled()){
                 new LoadLevelTask().execute(id);
                 levelRow = id;
@@ -248,12 +244,12 @@ public class LevelView extends Activity {
 
     public void showLevelSelection(){
         // parse it aas a Level
-//        int resId = this.getResources().getIdentifier("drawable/" + currentLevel.getImgSrc(), "drawable", this.getPackageName());
+//        int resId = this.getResources().getIdentifier("drawable/" + gameMediator.getImgSrc(), "drawable", this.getPackageName());
 //        lvlImageView.setImageResource(resId);
-//        lvlImageView.setContentDescription(currentLevel.getLevelName());
-        //levelLegendContainerView.setBackground(getDrawable(this.getResources().getIdentifier("drawable/" + currentLevel.getLevelBgImgsrc(), "drawable", this.getPackageName() ) ) );
-        txtViewLevelName.setText(currentLevel.getLevelName());
-        setLevelLegendView(currentLevel.getBallColor(), currentLevel.getInflaterColor(), currentLevel.getDeflaterColor() );
+//        lvlImageView.setContentDescription(gameMediator.getLevelName());
+        //levelLegendContainerView.setBackground(getDrawable(this.getResources().getIdentifier("drawable/" + gameMediator.getLevelBgImgsrc(), "drawable", this.getPackageName() ) ) );
+        txtViewLevelName.setText(gameMediator.getLevelName());
+        setLevelLegendView(gameMediator.getBallColor(), gameMediator.getInflaterColor(), gameMediator.getReducerColor() );
     }
 
 }

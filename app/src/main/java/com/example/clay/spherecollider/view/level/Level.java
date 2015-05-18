@@ -4,69 +4,37 @@ package com.example.clay.spherecollider.view.level;
  * Created by Clay on 4/11/2015.
  */
 public class Level {
-    // level props
-    private String levelName;
-    private String levelBgImgsrc;
-    private String levelCompleted;
-    // colors
-    private String ballColor;
-    private String inflaterColor;
-    private String deflaterColor;
+    private String levelName, levelCompleted;
+    private int levelBG;
+    private String ballColor, inflaterColor, reducerColor;
+    private int numReducers, numInflaters, numPoints, maxPoints;
 
-    private int maxPoints;
-    private int oneStarPoints;
-    private int twoStarPoints;
-    private int threeStarPoints;
-
-    private int numLives;
-    private int numDeflaters;
-    private int numInflaters;
-    private int inflaterMaxVelocity;
-    private int inflaterMinVelocity;
-
-    // later will want to probably pass in the levelId from database results and get the levels coins
-    public Level(
-            String levelName,
-            String levelBgImgsrc,
-            String levelCompleted,
-            String ballColor,
-            String inflaterColor,
-            String deflaterColor,
-            int maxPoints,
-            int oneStarPoints,
-            int twoStarPoints,
-            int threeStarPoints,
-            int numLives,
-            int numDeflaters,
-            int numInflaters,
-            int inflaterMaxVelocity,
-            int inflaterMinVelocity
-    ){
+    /**
+     * Default constructor
+     * @param levelName
+     * @param levelCompleted
+     * @param levelBG
+     * @param ballColor
+     * @param inflaterColor
+     * @param reducerColor
+     * @param numReducers
+     * @param numInflaters
+     * @param numPoints
+     * @param maxPoints
+     */
+    public Level(String levelName, String levelCompleted, int levelBG,
+                 String ballColor, String inflaterColor, String reducerColor,
+                 int numReducers, int numInflaters, int numPoints, int maxPoints) {
         this.levelName = levelName;
-        this.levelBgImgsrc = levelBgImgsrc;
         this.levelCompleted = levelCompleted;
+        this.levelBG = levelBG;
         this.ballColor = ballColor;
         this.inflaterColor = inflaterColor;
-        this.deflaterColor = deflaterColor;
-        this.maxPoints = maxPoints;
-        this.oneStarPoints = oneStarPoints;
-        this.twoStarPoints = twoStarPoints;
-        this.threeStarPoints = threeStarPoints;
-        this.numLives = numLives;
-        this.numDeflaters = numDeflaters;
+        this.reducerColor = reducerColor;
+        this.numReducers = numReducers;
         this.numInflaters = numInflaters;
-        this.inflaterMaxVelocity = inflaterMaxVelocity;
-        this.inflaterMinVelocity = inflaterMinVelocity;
-
-    }
-
-
-    public String getLevelBgImgsrc() {
-        return levelBgImgsrc;
-    }
-
-    public void setLevelBgImgsrc(String levelBgImgsrc) {
-        this.levelBgImgsrc = levelBgImgsrc;
+        this.numPoints = numPoints;
+        this.maxPoints = maxPoints;
     }
 
     public String getLevelName() {
@@ -85,36 +53,12 @@ public class Level {
         this.levelCompleted = levelCompleted;
     }
 
-    public int getMaxPoints() {
-        return maxPoints;
+    public int getLevelBG() {
+        return levelBG;
     }
 
-    public void setMaxPoints(int maxPoints) {
-        this.maxPoints = maxPoints;
-    }
-
-    public int getOneStarPoints() {
-        return oneStarPoints;
-    }
-
-    public void setOneStarPoints(int oneStarPoints) {
-        this.oneStarPoints = oneStarPoints;
-    }
-
-    public int getTwoStarPoints() {
-        return twoStarPoints;
-    }
-
-    public void setTwoStarPoints(int twoStarPoints) {
-        this.twoStarPoints = twoStarPoints;
-    }
-
-    public int getThreeStarPoints() {
-        return threeStarPoints;
-    }
-
-    public void setThreeStarPoints(int threeStarPoints) {
-        this.threeStarPoints = threeStarPoints;
+    public void setLevelBG(int levelBG) {
+        this.levelBG = levelBG;
     }
 
     public String getBallColor() {
@@ -133,28 +77,20 @@ public class Level {
         this.inflaterColor = inflaterColor;
     }
 
-    public String getDeflaterColor() {
-        return deflaterColor;
+    public String getReducerColor() {
+        return reducerColor;
     }
 
-    public void setDeflaterColor(String deflaterColor) {
-        this.deflaterColor = deflaterColor;
+    public void setReducerColor(String reducerColor) {
+        this.reducerColor = reducerColor;
     }
 
-    public int getNumLives() {
-        return numLives;
+    public int getNumReducers() {
+        return numReducers;
     }
 
-    public void setNumLives(int numLives) {
-        this.numLives = numLives;
-    }
-
-    public int getNumDeflaters() {
-        return numDeflaters;
-    }
-
-    public void setNumDeflaters(int numDeflaters) {
-        this.numDeflaters = numDeflaters;
+    public void setNumReducers(int numReducers) {
+        this.numReducers = numReducers;
     }
 
     public int getNumInflaters() {
@@ -165,19 +101,19 @@ public class Level {
         this.numInflaters = numInflaters;
     }
 
-    public int getInflaterMaxVelocity() {
-        return inflaterMaxVelocity;
+    public int getNumPoints() {
+        return numPoints;
     }
 
-    public void setInflaterMaxVelocity(int inflaterMaxVelocity) {
-        this.inflaterMaxVelocity = inflaterMaxVelocity;
+    public void setNumPoints(int numPoints) {
+        this.numPoints = numPoints;
     }
 
-    public int getInflaterMinVelocity() {
-        return inflaterMinVelocity;
+    public int getMaxPoints() {
+        return maxPoints;
     }
 
-    public void setInflaterMinVelocity(int inflaterMinVelocity) {
-        this.inflaterMinVelocity = inflaterMinVelocity;
+    public void setMaxPoints(int maxPoints) {
+        this.maxPoints = maxPoints;
     }
 }

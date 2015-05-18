@@ -1,4 +1,4 @@
-package com.example.clay.spherecollider.view.game.view;
+package com.example.clay.spherecollider.view.game.surface;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -7,12 +7,13 @@ import android.graphics.PorterDuff;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
-import com.mcbain.wyatt.gameleveltest.game.GameLoop;
-import com.mcbain.wyatt.gameleveltest.game.GameMediator;
-import com.mcbain.wyatt.gameleveltest.game.LevelManager;
-import com.mcbain.wyatt.gameleveltest.models.Ball;
-import com.mcbain.wyatt.gameleveltest.models.GameModel;
-import com.mcbain.wyatt.gameleveltest.models.Score;
+
+import com.example.clay.spherecollider.view.game.management.GameLoop;
+import com.example.clay.spherecollider.view.game.management.GameMediator;
+import com.example.clay.spherecollider.view.game.management.LevelManager;
+import com.example.clay.spherecollider.view.game.models.Ball;
+import com.example.clay.spherecollider.view.game.models.GameModel;
+import com.example.clay.spherecollider.view.game.models.Score;
 
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;

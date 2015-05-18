@@ -1,7 +1,7 @@
 package com.example.clay.spherecollider.view.game.models;
 
-import com.mcbain.wyatt.gameleveltest.util.PaintUtility;
 
+import com.example.clay.spherecollider.view.game.util.PaintUtility;
 
 /**
  * Inflates the ball when hit by the ball

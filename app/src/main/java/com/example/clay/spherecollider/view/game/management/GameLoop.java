@@ -2,7 +2,7 @@ package com.example.clay.spherecollider.view.game.management;
 
 import android.graphics.Canvas;
 
-import com.mcbain.wyatt.gameleveltest.view.GameSurface;
+import com.example.clay.spherecollider.view.game.surface.GameSurface;
 
 
 /**

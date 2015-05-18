@@ -4,9 +4,10 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-import com.mcbain.wyatt.gameleveltest.game.GameMediator;
-import com.mcbain.wyatt.gameleveltest.sensors.SensorHandler;
-import com.mcbain.wyatt.gameleveltest.util.PaintUtility;
+
+import com.example.clay.spherecollider.view.game.management.GameMediator;
+import com.example.clay.spherecollider.view.game.sensors.SensorHandler;
+import com.example.clay.spherecollider.view.game.util.PaintUtility;
 
 import java.util.Date;
 import java.util.Observable;
@@ -238,5 +239,9 @@ public class Ball implements GameModel, Observer {
 
     public boolean isDead() {
         return isDead;
+    }
+
+    public void setDead(boolean isDead) {
+        this.isDead = isDead;
     }
 }

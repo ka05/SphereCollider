@@ -12,6 +12,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import com.example.clay.spherecollider.R;
 import com.example.clay.spherecollider.view.level.Level;
 
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class DatabaseConnector
    } // end method close
 
    // inserts a new Level in the database
-   public void insertLevel(String levelName, String levelBgImgsrc)
+   public void insertLevel(String levelName, int levelBgImgsrc)
    {
       ContentValues newLevel = new ContentValues();
       newLevel.put("levelname", levelName);
@@ -91,11 +92,11 @@ public class DatabaseConnector
       close(); // close the database
    } // end method deleteContact
 
-   public void insertMultiple(ArrayList<HashMap<String, String>> levelList){
+   public void insertMultiple(ArrayList<HashMap<String, Integer>> levelList){
 
-       for(HashMap<String, String> levelData : levelList){
+       for(HashMap<String, Integer> levelData : levelList){
            String levelName = "";
-           String levelBgImgsrc = "";
+           int levelBgImgsrc = 0;
 
            Iterator it = levelData.entrySet().iterator();
            while (it.hasNext()) {
@@ -105,7 +106,7 @@ public class DatabaseConnector
                    levelName = pair.getValue().toString();
                }
                if(pair.getKey() == "levelbgimgsrc"){
-                   levelBgImgsrc = pair.getValue().toString();
+                   levelBgImgsrc = (int)pair.getValue();
                }
                it.remove(); // avoids a ConcurrentModificationException
            }
@@ -179,21 +180,16 @@ public class DatabaseConnector
         // query to create a new table named contacts
         String createLevelTableQuery = "CREATE TABLE levels(" +
             "_id integer primary key autoincrement, " +
-            "levelname TEXT, " +
-            "levelbgimgsrc TEXT, " +
-            "levelcompleted TEXT, " +
+            "levelName TEXT, " +
+            "levelBG integer, " +
+            "levelCompleted TEXT, " +
             "ballColor TEXT, " +
             "inflaterColor TEXT, " +
-            "deflaterColor TEXT, " +
-            "maxpoints integer, " +
-            "onestarpoints integer, " +
-            "twostarpoints integer, " +
-            "threestarpoints integer, " +
-            "numlives integer, " +
-            "numdeflaters integer, " +
-            "numinflaters integer, " +
-            "inflatermaxvelocity integer, " +
-            "inflaterminvelocity integer " +
+            "reducerColor TEXT, " +
+            "numReducers integer, " +
+            "numInflaters integer, " +
+            "numPoints integer, " +
+            "maxPoints integer " +
         ");";
 
         db.execSQL(createLevelTableQuery); // execute the query
@@ -212,52 +208,83 @@ public class DatabaseConnector
            ArrayList<Level> levels = new ArrayList<>();
 
            levels.add(new Level(
-                   "Level 1", // levelName
-                   "lvl1_bg", // levelBgImgsrc - background image src filename
-                   "false", // levelCompleted
-                   "#FF9900", // ballColor - orange
-                   "#99FF00", // inflaterColor - green
-                   "#CC0000", // deflaterColor - red
-                   500, // maxPoints
-                   100, // oneStarPoints
-                   200, // twoStarPoints
-                   300, // threeStarPoints
-                   3, // numLives
-                   2, // numDeflaters
+                   "Level 1", // name
+                   "false", // completed
+                   R.drawable.level1, // background
+                   "#ff7935", // ballColor
+                   "#dd2ea8", // inflater
+                   "#2dd2d7", // reducer
+                   8, // num reducers
                    4, // numInflaters
-                   5, // inflaterMaxVelocity
-                   2 // inflaterMinVelocity
+                   20, // num starting points
+                   100 // max points
            ));
-           // Level( levelName, levelBgImgsrc, levelCompleted, ballColor, inflaterColor, deflaterColor,
-           //        maxPoints, oneStarPoints, twoStarPoints, threeStarPoints, numLives, numDeflaters,
-           //        numInflaters, inflaterMaxVelocity, inflaterMinVelocity )
-           levels.add(new Level("Level 2", "lvl2_bg", "false", "#FF9900", "#99FF00", "#CC0000", 500, 100, 200, 300, 3, 2, 4, 5, 2 ));
-           levels.add(new Level("Level 3", "lvl3_bg", "false", "#FF9900", "#99FF00", "#CC0000", 500, 100, 200, 300, 3, 2, 4, 5, 2 ));
-           levels.add(new Level("Level 4", "lvl4_bg", "false", "#FF9900", "#99FF00", "#CC0000", 500, 100, 200, 300, 3, 2, 4, 5, 2 ));
-           levels.add(new Level("Level 5", "lvl5_bg", "false", "#FF9900", "#99FF00", "#CC0000", 500, 100, 200, 300, 3, 2, 4, 5, 2 ));
+           levels.add(new Level(
+                   "Level 2", // name
+                   "false", // completed
+                   R.drawable.level2, // background
+                   "#ff7137", // ballColor
+                   "#2ed7c5", // inflater
+                   "#d0f034", // reducer
+                   7, // num reducers
+                   5, // numInflaters
+                   20, // num starting points
+                   200 // max points
+           ));
+           levels.add(new Level(
+                   "Level 3", // name
+                   "false", // completed
+                   R.drawable.level3, // background
+                   "#50dc2f", // ballColor
+                   "#f43445", // inflater
+                   "#2ed7c5", // reducer
+                   6, // num reducers
+                   6, // numInflaters
+                   20, // num starting points
+                   300 // max points
+           ));
+           levels.add(new Level(
+                   "Level 4", // name
+                   "false", // completed
+                   R.drawable.level4, // background
+                   "#964cd7", // ballColor
+                   "#33d7c6", // inflater
+                   "#fe753c", // reducer
+                   5, // num reducers
+                   7, // numInflaters
+                   20, // num starting points
+                   400 // max points
+           ));
+           levels.add(new Level(
+                   "Level 5", // name
+                   "false", // completed
+                   R.drawable.level5, // background
+                   "#53dc34", // ballColor
+                   "#db58bc", // inflater
+                   "#57d8ca", // reducer
+                   4, // num reducers
+                   8, // numInflaters
+                   20, // num starting points
+                   500 // max points
+           ));
+
 
 
            for(Level level : levels) {
                String createQuery = "INSERT INTO levels" +
-                       "(levelname, levelbgimgsrc, levelcompleted, ballColor, inflaterColor, deflaterColor, " +
-                       "maxpoints, onestarpoints, twostarpoints, threestarpoints, numlives, " +
-                       "numdeflaters, numinflaters, inflatermaxvelocity, inflaterminvelocity) VALUES" +
+                       "(levelName, levelBG, levelCompleted, ballColor, inflaterColor, reducerColor," +
+                       "numReducers, numInflaters, numPoints, maxPoints) VALUES" +
                        " ('" +
                        level.getLevelName() + "', '" +
-                       level.getLevelBgImgsrc() + "', '" +
+                       level.getLevelBG() + "', '" +
                        level.getLevelCompleted() + "', '" +
                        level.getBallColor() + "', '" +
                        level.getInflaterColor() + "', '" +
-                       level.getDeflaterColor() + "', '" +
-                       level.getMaxPoints() + "', '" +
-                       level.getOneStarPoints() + "', '" +
-                       level.getTwoStarPoints() + "', '" +
-                       level.getThreeStarPoints() + "', '" +
-                       level.getNumLives() + "', '" +
-                       level.getNumDeflaters() + "', '" +
+                       level.getReducerColor() + "', '" +
+                       level.getNumReducers() + "', '" +
                        level.getNumInflaters() + "', '" +
-                       level.getInflaterMaxVelocity() + "', '" +
-                       level.getInflaterMinVelocity() +
+                       level.getNumPoints() + "', '" +
+                       level.getMaxPoints() +
                        "');";
 
                db.execSQL(createQuery); // execute the query

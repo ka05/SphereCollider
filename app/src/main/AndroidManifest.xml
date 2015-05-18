@@ -48,7 +48,7 @@
                 android:value="com.example.clay.spherecollider.SphereCollider" />
         </activity>
         <activity
-            android:name=".BallGame"
+            android:name=".view.game.SphereCollider"
             android:label="@string/ball_game"
             android:screenOrientation="landscape">
             <meta-data

@@ -28,13 +28,15 @@
     <string name="app_name_str">Sphere Collider</string>
     <string name="artifacts_legend">Game Artifacts Legend</string>
     <string name="select_level">Select a level</string>
-    <string name="quit">Quit</string>
-    <string name="levels_btn">Levels</string>
-    <string name="next_level_btn">Next Level</string>
-    <string name="retry_level">Retry?</string>
-    <string name="continue_btn">Continue</string>
-    <string name="paused_game">Paused Game</string>
-    <string name="test_pause_menu">Test PauseMenu</string>
+    <string name="quit">QUIT</string>
+    <string name="levels_btn">LEVELS</string>
+    <string name="next_level_btn">NEXT LEVEL</string>
+    <string name="retry_level">RETRY</string>
+    <string name="continue_btn">CONTINUE</string>
+    <string name="paused_game">PAUSED</string>
     <string name="coins">Coins</string>
-    <string name="help_btn">Help</string>
+    <string name="help_btn">HELP</string>
+    <string name="game_paused">
+        Its okay to take a break, the chaos can become overwhelming.
+    </string>
 </resources>

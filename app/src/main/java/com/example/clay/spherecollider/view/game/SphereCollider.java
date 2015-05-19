@@ -147,7 +147,7 @@ public class SphereCollider extends Activity {
 
         switch (winLossType) {
             case 1:
-                options.put("title", "Level Complete");
+                options.put("title", "LEVEL " + gameMediator.getLevelId() + " COMPLETE");
                 options.put("levelFailed", "false");
                 options.put("msg", "Good Job!");
                 new UpdateLevelCompletedTask().execute(gameMediator.getLevelId());
@@ -155,12 +155,12 @@ public class SphereCollider extends Activity {
                 new LoadLevelTask().execute(gameMediator.getLevelId() + 1); // gets the next level data
                 break;
             case 2:
-                options.put("title", "Level Failed");
+                options.put("title", "LEVEL " + gameMediator.getLevelId() + " FAILED");
                 options.put("levelFailed", "true");
                 options.put("msg", "You ran out of Spheres to collect to score points.");
                 break;
             case 3:
-                options.put("title", "Level Failed");
+                options.put("title", "LEVEL " + gameMediator.getLevelId() + " FAILED");
                 options.put("levelFailed", "true");
                 options.put("msg", "You grew too large.");
                 break;

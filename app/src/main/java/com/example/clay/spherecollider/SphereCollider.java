@@ -21,7 +21,7 @@ public class SphereCollider extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
-        overridePendingTransition(R.anim.mainfadein, R.anim.splashfadeout);
+//        overridePendingTransition(R.anim.splashfadeout, R.anim.mainfadein);
         setContentView(R.layout.activity_sphere_collider);
         initSplashButtons();
         initBG();

@@ -60,6 +60,9 @@ public class SplashScreen extends Activity {
 
                 // close this activity
                 finish();
+
+                //Apply splash exit (fade out) and main entry (fade in) animation transitions.
+                overridePendingTransition(R.anim.mainfadein, R.anim.splashfadeout);
             }
         }, SPLASH_TIME_OUT);
     }

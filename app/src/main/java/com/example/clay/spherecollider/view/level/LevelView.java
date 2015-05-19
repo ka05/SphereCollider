@@ -49,6 +49,7 @@ public class LevelView extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.slide_in, R.anim.slide_out);
         setContentView(R.layout.activity_levels);
 
         gameMediator = GameMediator.getInstance();

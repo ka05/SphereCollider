@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.example.clay.spherecollider.view.dialogs.CustomModal;
@@ -19,6 +20,8 @@ public class SphereCollider extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        overridePendingTransition(R.anim.slide_out, R.anim.slide_in);
+        overridePendingTransition(R.anim.mainfadein, R.anim.splashfadeout);
         setContentView(R.layout.activity_sphere_collider);
         initSplashButtons();
         initBG();
@@ -64,7 +67,7 @@ public class SphereCollider extends Activity {
                 // TODO Auto-generated method stub
                 HashMap<String, String> options = new HashMap<String, String>();
                 // options:
-                options.put("modal_title", "About This App");
+                options.put("modal_title", "ABOUT THIS APP");
                 options.put("modal_content", getString(R.string.about_info));
                 CustomModal cm = new CustomModal(SphereCollider.this, "info", options);
             }
@@ -79,8 +82,8 @@ public class SphereCollider extends Activity {
                 // TODO Auto-generated method stub
                 HashMap<String, String> options = new HashMap<String, String>();
                 // options:
-                options.put("modal_title", "How to play");
-                options.put("modal_content", getString(R.string.help_info) );
+                options.put("modal_title", "HOW TO PLAY");
+                options.put("modal_content", getString(R.string.help_info));
                 CustomModal cm = new CustomModal(SphereCollider.this, "info", options);
             }
 
@@ -92,5 +95,6 @@ public class SphereCollider extends Activity {
         // create and Intent to launch the ViewContact Activity
         Intent viewLevels = new Intent(SphereCollider.this, LevelView.class);
         startActivity(viewLevels);
+//        overridePendingTransition(R.anim.mainfadein, R.anim.splashfadeout);
     }
 }

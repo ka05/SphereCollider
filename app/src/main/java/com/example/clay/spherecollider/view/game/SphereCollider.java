@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.WindowManager;
 
 import com.example.clay.spherecollider.database.DatabaseConnector;
@@ -209,5 +210,14 @@ public class SphereCollider extends Activity {
             result.close(); // close the result cursor
             databaseConnector.close(); // close database connection
         } // end method onPostExecute
+    }
+
+
+    // if back button pressed then pause game
+    @Override
+    public void onBackPressed() {
+        Log.d("CDA", "onBackPressed Called");
+        CustomModal cm = new CustomModal(SphereCollider.this, "pause_menu", null);
+        gameSurface.pause();
     }
 }

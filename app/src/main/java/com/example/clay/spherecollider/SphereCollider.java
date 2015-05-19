@@ -65,7 +65,22 @@ public class SphereCollider extends Activity {
                 HashMap<String, String> options = new HashMap<String, String>();
                 // options:
                 options.put("modal_title", "About This App");
-                options.put("modal_content", getString(R.string.about_info) );
+                options.put("modal_content", getString(R.string.about_info));
+                CustomModal cm = new CustomModal(SphereCollider.this, "info", options);
+            }
+
+        });
+
+        // how to play button
+        findViewById(R.id.btnHelp).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                HashMap<String, String> options = new HashMap<String, String>();
+                // options:
+                options.put("modal_title", "How to play");
+                options.put("modal_content", getString(R.string.help_info) );
                 CustomModal cm = new CustomModal(SphereCollider.this, "info", options);
             }
 

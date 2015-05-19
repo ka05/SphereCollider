@@ -53,64 +53,113 @@
                     android:layout_height="match_parent">
 
                     <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent">
-
-                        <View
-                            android:layout_height="20dp"
-                            android:layout_width="20dp"
-                            android:background="@drawable/legend_circle"
-                            android:id="@+id/ball"
-                            android:layout_margin="10dp" />
-
-                        <View
-                            android:layout_height="20dp"
-                            android:layout_width="20dp"
-                            android:background="@drawable/legend_circle"
-                            android:id="@+id/inflater"
-                            android:layout_margin="10dp" />
-
-                        <View
-                            android:layout_height="20dp"
-                            android:layout_width="20dp"
-                            android:background="@drawable/legend_circle"
-                            android:id="@+id/deflater"
-                            android:layout_margin="10dp" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="vertical"
+                        android:orientation="horizontal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1">
 
-                        <TextView
+                        <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/ball"
-                            android:id="@+id/textView2"
-                            android:layout_margin="12dp"
-                            android:textColor="#ffffffff" />
+                            android:layout_height="match_parent">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/inflater"
-                            android:id="@+id/textView3"
-                            android:layout_margin="12dp"
-                            android:textColor="#ffffffff" />
+                            <View
+                                android:layout_height="20dp"
+                                android:layout_width="20dp"
+                                android:background="@drawable/legend_circle"
+                                android:id="@+id/ball"
+                                android:layout_margin="10dp" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/deflater"
-                            android:id="@+id/textView4"
-                            android:layout_margin="12dp"
-                            android:textColor="#ffffffff" />
+                            <View
+                                android:layout_height="20dp"
+                                android:layout_width="20dp"
+                                android:background="@drawable/legend_circle"
+                                android:id="@+id/coins"
+                                android:layout_margin="10dp" />
 
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/ball"
+                                android:id="@+id/textView2"
+                                android:layout_margin="12dp"
+                                android:textColor="#ffffffff" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/coins"
+                                android:id="@+id/textView6"
+                                android:layout_margin="12dp"
+                                android:textColor="#ffffffff" />
+
+
+                        </LinearLayout>
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+
+                            <View
+                                android:layout_height="20dp"
+                                android:layout_width="20dp"
+                                android:background="@drawable/legend_circle"
+                                android:id="@+id/inflater"
+                                android:layout_margin="10dp" />
+
+                            <View
+                                android:layout_height="20dp"
+                                android:layout_width="20dp"
+                                android:background="@drawable/legend_circle"
+                                android:id="@+id/deflater"
+                                android:layout_margin="10dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/inflater"
+                                android:id="@+id/textView3"
+                                android:layout_margin="12dp"
+                                android:textColor="#ffffffff" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/deflater"
+                                android:id="@+id/textView4"
+                                android:layout_margin="12dp"
+                                android:textColor="#ffffffff" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
                 </LinearLayout>
 
             </LinearLayout>

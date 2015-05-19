@@ -15,6 +15,12 @@
         Wyatt McBain and Clay Herendeen\n
         for Android Class @ RIT. Enjoy!
     </string>
+    <string name="help_info">
+        Game Description: \n
+        The goal of each level is too collect \n
+        as many coins as possible without growing \n
+        too large in size.
+    </string>
     <string name="arcade_btn_name">Arcade</string>
     <string name="deflater">Deflater</string>
     <string name="inflater">Inflater</string>
@@ -29,4 +35,6 @@
     <string name="continue_btn">Continue</string>
     <string name="paused_game">Paused Game</string>
     <string name="test_pause_menu">Test PauseMenu</string>
+    <string name="coins">Coins</string>
+    <string name="help_btn">Help</string>
 </resources>

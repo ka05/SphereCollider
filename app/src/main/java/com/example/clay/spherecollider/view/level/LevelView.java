@@ -153,10 +153,12 @@ public class LevelView extends Activity {
         Drawable ballDrawable = levelLegendContainerView.findViewById(R.id.ball).getBackground();
         Drawable deflaterDrawable = levelLegendContainerView.findViewById(R.id.deflater).getBackground();
         Drawable inflaterDrawable = levelLegendContainerView.findViewById(R.id.inflater).getBackground();
+        Drawable coinsDrawable = levelLegendContainerView.findViewById(R.id.coins).getBackground();
 
         ballDrawable.setColorFilter(Color.parseColor(ballColor), mode);
         deflaterDrawable.setColorFilter(Color.parseColor(deflaterColor), mode);
         inflaterDrawable.setColorFilter(Color.parseColor(inflaterColor), mode);
+        coinsDrawable.setColorFilter(Color.parseColor("#ffd600"), mode);
     }
 
 

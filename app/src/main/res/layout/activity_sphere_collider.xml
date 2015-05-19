@@ -113,6 +113,22 @@
             android:paddingTop="20dp"
             android:paddingBottom="20dp" />
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/help_btn"
+            android:id="@+id/btnHelp"
+            android:background="@drawable/btn"
+            android:textColor="#fff"
+            android:layout_below="@+id/btnViewLevels"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:layout_margin="10dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp" />
+
     </LinearLayout>
 
     <!--<Button

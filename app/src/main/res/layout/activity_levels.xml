@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:baselineAligned="false"
+        android:background="@drawable/app_bg"
+        android:layout_weight="1"
+        android:backgroundTint="#aaffffff">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:padding="20dp">
+
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/levelLegendContainerView"
+                android:background="#88000000">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/select_level"
+                    android:id="@+id/txtViewLevelName"
+                    android:layout_weight="1"
+                    android:textColor="#FFFFFF"
+                    android:gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:textSize="24sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/artifacts_legend"
+                    android:id="@+id/textView5"
+                    android:textColor="#FFFFFF"
+                    android:layout_marginLeft="10dp" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+                            <View
+                                android:layout_height="20dp"
+                                android:layout_width="20dp"
+                                android:background="@drawable/legend_circle"
+                                android:id="@+id/ball"
+                                android:layout_margin="10dp" />
+
+                            <View
+                                android:layout_height="20dp"
+                                android:layout_width="20dp"
+                                android:background="@drawable/legend_circle"
+                                android:id="@+id/coins"
+                                android:layout_margin="10dp" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/ball"
+                                android:id="@+id/textView2"
+                                android:layout_margin="12dp"
+                                android:textColor="#ffffffff" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/coins"
+                                android:id="@+id/textView6"
+                                android:layout_margin="12dp"
+                                android:textColor="#ffffffff" />
+
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+
+
+                            <View
+                                android:layout_height="20dp"
+                                android:layout_width="20dp"
+                                android:background="@drawable/legend_circle"
+                                android:id="@+id/inflater"
+                                android:layout_margin="10dp" />
+
+                            <View
+                                android:layout_height="20dp"
+                                android:layout_width="20dp"
+                                android:background="@drawable/legend_circle"
+                                android:id="@+id/deflater"
+                                android:layout_margin="10dp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/inflater"
+                                android:id="@+id/textView3"
+                                android:layout_margin="12dp"
+                                android:textColor="#ffffffff" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/deflater"
+                                android:id="@+id/textView4"
+                                android:layout_margin="12dp"
+                                android:textColor="#ffffffff" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home"
+                    android:id="@+id/btnHome"
+                    android:background="@drawable/btn"
+                    android:textColor="#fff"
+                    android:layout_alignTop="@+id/levelImage"
+                    android:layout_alignLeft="@+id/btnLaunchModal"
+                    android:layout_alignStart="@+id/btnLaunchModal"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="5dp"
+                    android:paddingBottom="20dp"
+                    android:paddingTop="20dp" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/start_level"
+                    android:id="@+id/btnStartLevel"
+                    android:background="@drawable/btn"
+                    android:textColor="#fff"
+                    android:layout_alignTop="@+id/levelImage"
+                    android:layout_alignLeft="@+id/btnLaunchModal"
+                    android:layout_alignStart="@+id/btnLaunchModal"
+                    android:layout_marginTop="10dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="5dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="288dp"
+            android:layout_height="fill_parent">
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:id="@+id/listViewLevels"
+                android:background="#88000000"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

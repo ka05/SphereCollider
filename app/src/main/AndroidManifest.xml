@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.clay.spherecollider" >
+
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".view.lib.SplashScreen"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- USE BELLOW CODE IF YOU WANT TO START WITHOUT SPLASH SCREEN -->
+        <!--<activity-->
+            <!--android:name=".SphereCollider"-->
+            <!--android:screenOrientation="landscape"-->
+            <!--android:label="@string/app_name" >-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <activity
+            android:name=".SphereCollider"
+            android:screenOrientation="landscape"
+            android:label="@string/app_name">
+        </activity>
+        <activity
+            android:name=".view.level.LevelView"
+            android:label="@string/level_view_name"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clay.spherecollider.SphereCollider" />
+        </activity>
+        <activity
+            android:name=".view.game.SphereCollider"
+            android:label="@string/ball_game"
+            android:screenOrientation="landscape">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.clay.spherecollider.SphereCollider" />
+        </activity>
+        <activity android:name=".database.AndroidDatabaseManager" />
+    </application>
+
+</manifest>

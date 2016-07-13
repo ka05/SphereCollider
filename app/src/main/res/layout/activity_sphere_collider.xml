@@ -1,0 +1,144 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".SphereCollider"
+    android:background="@drawable/app_bg"
+    android:padding="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_height="400dp"
+            android:layout_width="400dp"
+            android:background="@drawable/legend_circle"
+            android:id="@+id/ball"
+            android:backgroundTint="#ff9dff4d"
+            android:layout_weight="0.49"
+            android:layout_marginLeft="-120dp"
+            android:layout_marginTop="-120dp" />
+
+        <View
+            android:layout_height="200dp"
+            android:layout_width="200dp"
+            android:background="@drawable/legend_circle"
+            android:id="@+id/inflater"
+            android:layout_marginLeft="120dp"
+            android:layout_marginStart="97dp"
+            android:layout_marginTop="100dp" />
+
+        <View
+            android:layout_height="100dp"
+            android:layout_width="100dp"
+            android:background="@drawable/legend_circle"
+            android:id="@+id/deflater"
+            android:layout_alignBottom="@+id/inflater"
+            android:layout_toRightOf="@+id/inflater"
+            android:layout_marginLeft="80dp"
+            android:layout_marginBottom="50dp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#AAFFFFFF">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name_str"
+            android:id="@+id/txtViewAppName"
+            android:gravity="center"
+            android:layout_margin="50dp"
+            android:textSize="50sp"
+            android:layout_gravity="center_horizontal" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearLayout">
+
+        <!--<Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Modal"
+            android:id="@+id/btnLaunchModal"
+            android:background="@drawable/btn_enabled"
+            android:textColor="#fff"
+            android:layout_below="@+id/btnViewLevels"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:layout_margin="10dp" />-->
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/arcade_btn_name"
+            android:id="@+id/btnViewLevels"
+            android:background="@drawable/btn"
+            android:textColor="#fff"
+            android:layout_alignTop="@+id/levelImage"
+            android:layout_alignLeft="@+id/btnLaunchModal"
+            android:layout_alignStart="@+id/btnLaunchModal"
+            android:layout_margin="10dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About"
+            android:id="@+id/btnViewAbout"
+            android:background="@drawable/btn"
+            android:textColor="#fff"
+            android:layout_below="@+id/btnViewLevels"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:layout_margin="10dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/help_btn"
+            android:id="@+id/btnHelp"
+            android:background="@drawable/btn"
+            android:textColor="#fff"
+            android:layout_below="@+id/btnViewLevels"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="40dp"
+            android:layout_margin="10dp"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp" />
+
+    </LinearLayout>
+
+    <!--<Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Launch DB"
+        android:id="@+id/btnDB"
+        android:background="@drawable/btn_enabled"
+        android:textColor="#fff"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />-->
+
+</RelativeLayout>
